@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// もう一度解くこと
+// 2回解いた
 int main(int argc, char const *argv[])
 {
   ios::sync_with_stdio(false);
