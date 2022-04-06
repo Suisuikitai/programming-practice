@@ -4,6 +4,7 @@ read name
 filename="$name.cpp"
 echo '#include <bits/stdc++.h>' >> $filename
 echo 'using namespace std;' >> $filename
+echo '#define rep(i, x) for (int i = 0; i < x; i++)' >> $filename
 echo '' >> $filename
 echo 'int main(int argc, char const *argv[])' >> $filename
 echo '{' >> $filename
