@@ -6,17 +6,22 @@ int main(int argc, char const *argv[])
 {
   ios::sync_with_stdio(false);
   cin.tie(0);
-  string s, t;
-  cin >> s >> t;
-  int d0 = (s[0] - t[0] + 26) % 26;
-  rep(i, s.size())
+  int n;
+  cin >> n;
+  vector<int> lack(n + 1, 0);
+  rep(i, n * 4 - 1)
   {
-    if (d0 != (s[i] - t[i] + 26) % 26)
+    int a;
+    cin >> a;
+    lack[a]++;
+  }
+  for (int i = 1; i < n + 1; i++)
+  {
+    if (lack[i] != 4)
     {
-      cout << "No" << '\n';
+      cout << i << '\n';
       return 0;
     }
   }
-  cout << "Yes" << '\n';
   return 0;
 }
