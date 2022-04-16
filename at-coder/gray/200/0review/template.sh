@@ -1,7 +1,7 @@
 #!/bin/sh
 
 read name
-filename="$name.cpp"
+filename="abc$name.cpp"
 echo '#include <bits/stdc++.h>' >> $filename
 echo 'using namespace std;' >> $filename
 echo '#define rep(i, x) for (int i = 0; i < x; i++)' >> $filename
