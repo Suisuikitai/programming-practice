@@ -23,7 +23,6 @@ int main(int argc, char const *argv[])
   vector<int> w(N), v(N);
   for (int i = 0; i < N; i++)
     cin >> w[i] >> v[i];
-  // i番目までの重さwまでの最大値
   vector<vector<long long>> dp(N + 1, vector<long long>(W + 1, 0));
   for (int i = 0; i < N; i++)
   {
