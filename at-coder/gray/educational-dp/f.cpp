@@ -29,25 +29,30 @@ int main(int argc, char const *argv[])
       if (s[i] == t[j])
         chmax(dp[i + 1][j + 1], dp[i][j] + 1);
       else
-        dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
+        dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
     }
   }
   int len = dp[sl][tl];
+  char ans[len + 1];
+  ans[len] = '\0';
   int i = sl, j = tl;
-  char ans[len];
   while (len > 0)
   {
-    if (s[i] == t[j])
+    if (s[i - 1] == t[j - 1])
     {
       --len;
-      ans[len] = s[i];
+      ans[len] = s[i - 1];
       --i;
       --j;
     }
     else if (dp[i][j] == dp[i - 1][j])
+    {
       --i;
+    }
     else
+    {
       --j;
+    }
   }
   cout << ans << '\n';
   return 0;
