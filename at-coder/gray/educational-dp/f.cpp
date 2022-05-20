@@ -32,27 +32,20 @@ int main(int argc, char const *argv[])
         dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
     }
   }
-  int len = dp[sl][tl];
-  char ans[len + 1];
-  ans[len] = '\0';
   int i = sl, j = tl;
-  while (len > 0)
+  string ans = "";
+  while (i > 0 && j > 0)
   {
     if (s[i - 1] == t[j - 1])
     {
-      --len;
-      ans[len] = s[i - 1];
       --i;
       --j;
+      ans = s[i] + ans;
     }
     else if (dp[i][j] == dp[i - 1][j])
-    {
       --i;
-    }
     else
-    {
       --j;
-    }
   }
   cout << ans << '\n';
   return 0;
