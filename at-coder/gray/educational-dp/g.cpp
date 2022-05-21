@@ -13,17 +13,14 @@ void chmin(T &a, T b)
   if (a > b)
     a = b;
 }
-int rec(int startPoint, vector<vector<int>> &G, vector<int> &dp)
+int rec(int from, vector<vector<int>> &G, vector<int> &dp)
 {
-  int depth = 0;
-  if (dp[startPoint] != -1)
-  {
-    for (int i : G[startPoint])
-    {
-      depth = max(depth, rec(i, G, dp) + 1);
-    }
-  }
-  return dp[startPoint] = depth;
+  if (dp[from] != -1)
+    return dp[from];
+  int ans = 0;
+  for (int i : G[from])
+    ans = max(ans, rec(i, G, dp) + 1);
+  return dp[from] = ans;
 }
 
 int main(int argc, char const *argv[])
@@ -40,11 +37,11 @@ int main(int argc, char const *argv[])
     G[x].push_back(y);
   }
   //メモ化再帰でいけそうっていう方向性はあっている
-  vector<int> dp(M + 1, -1);
+  vector<int> dp(N + 1, -1);
   for (int i = 1; i < N + 1; i++)
   {
-    if (dp[i] != -1)
-      dp[i] = rec(i, G, dp);
+    if (dp[i] == -1)
+      rec(i, G, dp);
   }
   int ans = 0;
   for (int i = 1; i < N + 1; ++i)
