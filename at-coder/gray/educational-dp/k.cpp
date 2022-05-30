@@ -24,8 +24,7 @@ int main(int argc, char const *argv[])
   vector<bool> dp(K + 1, false);
   for (int i = a[0]; i < K + 1; i++)
     for (int j = 0; j < N; j++)
-      if (i - a[j] >= 0 && !dp[i - a[j]])
-        dp[i] = true;
+      dp[i] = !dp[i - a[j]];
   if (dp[K])
     cout << "First" << '\n';
   else
