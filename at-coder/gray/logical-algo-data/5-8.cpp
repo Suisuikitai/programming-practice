@@ -14,8 +14,9 @@ int main(int argc, char const *argv[])
   int N, M;
   cin >> N >> M;
   vector<int> a(N);
+  for (int &i : a)
+    cin >> i;
   vector<vector<double>> f(N + 1, vector<double>(N + 1, 0));
-  //区間のコストを求める前処理
   for (int i = 1; i <= N; i++)
   {
     for (int j = 0; j < i; j++)
@@ -28,15 +29,12 @@ int main(int argc, char const *argv[])
   }
   vector<vector<double>> dp(N + 1, vector<double>(M + 1, -INFINITY));
   dp[0][0] = 0;
-  //区間の右
-  for (int i = 0; i < N + 1; i++)
+  for (int i = 0; i <= N; i++)
   {
-    //区間の左
     for (int j = 0; j < i; j++)
     {
-      for (int k = 1; k < M + 1; k++)
+      for (int k = 1; k <= M; k++)
       {
-        //仕切りの数
         chmax(dp[i][k], dp[j][k - 1] + f[j][i]);
       }
     }
