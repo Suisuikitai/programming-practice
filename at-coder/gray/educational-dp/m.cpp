@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
     }
     for (int j = 0; j < K + 1; j++)
     {
-      dp[i][j] = cum[j + 1] - cum[max(0, j - a[i])] + MOD;
+      dp[i][j] = (cum[j + 1] - cum[max(0, j - a[i])] + MOD) % MOD;
       // dp[i][j]=cum[j+1]-cum[j-a[i]]
       //=(dp[i-1][0]...+dp[i-1][j])-(dp[i-1][0]...+dp[i-1][j-a[i]-1])
       //=dp[i-1][j-a[i]]...+dp[i-1][j]
