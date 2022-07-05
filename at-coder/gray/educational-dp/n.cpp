@@ -42,27 +42,5 @@ int main(int argc, char const *argv[])
     cin >> a[i];
     sum[i + 1] = sum[i - 1] + a[i];
   }
-  for (int l = 0; l < N; l++)
-  {
-    for (int r = l + 1; r <= N; r++)
-    {
-      int sum = 0;
-      for (int i = l; i < r; i++)
-        sum += a[i];
-    }
-  }
   return 0;
-}
-
-int recursive(int l, int r)
-{
-  if (flag[l][r])
-    return dp[l][r];
-  flag[l][r] = true;
-  if (l == r)
-    return 0;
-  int fans = INF;
-  for (int i = l; i < r; r++)
-    fans = min(fans, recursive(l, (r - l) / 2) + recursive((r - l) / 2 + 1, r));
-  return dp[l][r] = fans + sum[r] - sum[l];
 }
