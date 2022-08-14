@@ -20,19 +20,26 @@ int main(int argc, char const *argv[])
   cin.tie(0);
   string S;
   cin >> S;
-  bool upper = false, lower = false, diff = true;
+  bool has_lower = false, has_upper = false, all_diff = true;
   for (int i = 0; i < S.size(); i++)
   {
     if (isupper(S[i]))
-      upper = true;
+      has_upper = true;
     else
-      lower = true;
+      has_lower = true;
   }
   for (int i = 0; i < S.size(); i++)
+  {
     for (int j = i + 1; j < S.size(); j++)
       if (S[i] == S[j])
-        diff = false;
-  if (upper && lower && diff)
+      {
+        all_diff = false;
+        break;
+      }
+    if (!all_diff)
+      break;
+  }
+  if (has_lower && has_upper && all_diff)
     cout << "Yes" << '\n';
   else
     cout << "No" << '\n';
